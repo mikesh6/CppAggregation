@@ -70,7 +70,7 @@ void Client::acheter(Produit * prod)
 	if (monPanier_ == nullptr) {
 
 		Panier monPanier_(4);
-		monPanier_->ajouter(prod); 
+		monPanier_.ajouter(prod); 
 
 	}
 }
