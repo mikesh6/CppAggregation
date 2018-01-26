@@ -70,7 +70,7 @@ void Client::acheter(Produit * prod)
 	if (monPanier_ == nullptr) {
 
 		Panier monPanier_(4);
-		monPanier_->ajouter(prod); //
+		monPanier_->ajouter(prod); 
 
 	}
 }
@@ -78,7 +78,7 @@ void Client::acheter(Produit * prod)
 void Client::afficherPanier()
 {
 
-	cout << monPanier.afficer();
+	cout << monPanier_.afficher();
 
 }
 
