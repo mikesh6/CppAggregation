@@ -17,17 +17,17 @@ Produit::Produit(string nom, int reference, double prix)
 
 }
 
-string Produit::obtenirNom()
+string Produit::obtenirNom() const
 {
 	return nom_;
 }
 
-int Produit::obtenirReference()
+int Produit::obtenirReference() const
 {
 	return reference_;
 }
 
-double Produit::obtenirPrix()
+double Produit::obtenirPrix() const
 {
 	return prix_;
 }
@@ -47,11 +47,12 @@ void Produit::modifierPrix(double prix)
 	prix_ = prix;
 }
 
-void Produit::afficher()
+void Produit::afficher() const
 {
-	cout << nom_ << endl;
-	cout << reference_ << endl;
-	cout << prix_ << endl;
+	cout << "Nom de produit : " << nom_ << endl;
+	cout << "Reference : " << reference_ << endl;
+	cout << "Prix : " << prix_ << endl;
+	cout << "-----------------------------" << endl;
 
 }
 

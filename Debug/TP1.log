@@ -1,14 +1,2 @@
-﻿  panier.cpp
-  client.cpp
-client.cpp(73): error C2819: type 'Panier' does not have an overloaded member 'operator ->'
-  c:\users\admin\documents\h18\tp\fichierstp1\panier.h(13): note: see declaration of 'Panier'
-  client.cpp(73): note: did you intend to use '.' instead?
-client.cpp(73): error C2232: '->Panier::ajouter': left operand has 'class' type, use '.'
-client.cpp(81): error C2065: 'monPanier': undeclared identifier
-client.cpp(81): error C2228: left of '.afficer' must have class/struct/union
-  client.cpp(81): note: type is 'unknown-type'
-client.cpp(88): error C2065: 'monPanier': undeclared identifier
-client.cpp(88): error C2541: 'delete': cannot delete objects that are not pointers
-  Rayon.cpp
-  Produit.cpp
-  Generating Code...
+﻿  Main.cpp
+  TP1.vcxproj -> C:\Users\Admin\Documents\H18\TP\fichiersTP1\Debug\TP1.exe

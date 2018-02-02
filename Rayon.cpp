@@ -19,22 +19,22 @@ Rayon::Rayon(string cat)
 	nombreProduits_ = 0;
 }
 
-string Rayon::obtenirCategorie()
+string Rayon::obtenirCategorie() const
 {
 	return categorie_;
 }
 
-Produit ** Rayon::obtenirTousProduits()
+Produit ** Rayon::obtenirTousProduits() const
 {
 	return tousProduits_;
 }
 
-int Rayon::obtenirCapaciteProduits()
+int Rayon::obtenirCapaciteProduits() const
 {
 	return capaciteProduits_;
 }
 
-int Rayon::obtenirNombreProduits()
+int Rayon::obtenirNombreProduits() const
 {
 	return nombreProduits_;
 }
@@ -49,55 +49,63 @@ void Rayon::ajouterProduit(Produit * produit)
 
 	if (tousProduits_ == nullptr)
 	{
-		capaciteProduits_ = 5;
+		capaciteProduits_ = 5;	
 		tousProduits_ = new  Produit *[capaciteProduits_];
-
 		
-		if (nombreProduits_ >= 5) {
-		capaciteProduits_ *= 2;		
+		
+		if (nombreProduits_ >= capaciteProduits_) {
+		capaciteProduits_ = capaciteProduits_ *  2;
 		tousProduits_[nombreProduits_] = produit;
+		nombreProduits_++;
 		}
 
-		else {
-
-		
+		else {		
 			tousProduits_[nombreProduits_] = produit;
+			nombreProduits_++;
 		}
 	}
 
 	else {
 
-		if (nombreProduits_ >= 5) {
-			capaciteProduits_ *= 2;
+		if (nombreProduits_ >= capaciteProduits_) {
+			capaciteProduits_ =  capaciteProduits_ * 2;
 			tousProduits_[nombreProduits_] = produit;
+			nombreProduits_++;
 
 		}
 
 		else {
 
 			tousProduits_[nombreProduits_] = produit;
+			nombreProduits_++;
 
 		}
 
 	}
 }
 
-void Rayon::afficher()
+
+
+
+void Rayon::afficher() const
 {
 
+	
+	cout << "Categorie: " << obtenirCategorie() << endl;
+	cout << "Capctie: " << obtenirCapaciteProduits() << endl;
+	cout << "Nombre de produits: " << obtenirNombreProduits() << endl;
 
-	cout << categorie_ << endl;
-	cout << capaciteProduits_ << endl;
-	cout << nombreProduits_ << endl;
+	cout << "-------" << endl;
+
+	for (int i = 0; i < obtenirNombreProduits(); i++) {
+
+		tousProduits_[i]->afficher();
+
+	}
+
+
 	
 
 	
-	for (int i = 0; i< nombreProduits_; i++)
-	{
-		
-		tousProduits_[i]->afficher();	   
-		
-    }
-
 
 }

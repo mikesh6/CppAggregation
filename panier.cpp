@@ -11,24 +11,25 @@ Panier::Panier(int capacite)
 
 }
 
-Produit ** Panier::obtenirContenuPanier()
+Produit ** Panier::obtenirContenuPanier() const
 {
 	return  contenuPanier_; 
 	
 }
 
-int Panier::obtenirNombreContenu()
+int Panier::obtenirNombreContenu() const
 {
 	return nombreContenu_;
 }
 
-double Panier::obtenirTotalApayer()
+double Panier::obtenirTotalApayer() const
 {
 	return totalAPayer_;
 }
 
 void Panier::ajouter(Produit * prod)
 {
+	
 	
 	Produit **doublePanier;	
 	if (nombreContenu_ >= capaciteContenu_) {
@@ -42,35 +43,51 @@ void Panier::ajouter(Produit * prod)
 
 		for (int i = 0; i < nombreContenu_; i++) {
 			doublePanier[i] = contenuPanier_[i];
-			delete contenuPanier_[i];
+			contenuPanier_[i] = 0;
 			 
 		}
 
 		contenuPanier_ = doublePanier;
-		
+		contenuPanier_[nombreContenu_] = prod;
+		nombreContenu_++;
+		totalAPayer_ += prod->obtenirPrix();
 
 	}
+
 
 	
 
 	else {
 
 		contenuPanier_[nombreContenu_] = prod;
+		nombreContenu_++;
+		totalAPayer_ += prod->obtenirPrix();
 	}
-	contenuPanier_[nombreContenu_] = prod;
+
+	
 }
 
 void Panier::livrer()
 {
-	delete  * contenuPanier_;
-	Panier(0);
+	
+
+	delete[] contenuPanier_;
+	
+	capaciteContenu_ = 0;
+	nombreContenu_ = 0;
+	totalAPayer_ = 0;
+
+	
+
+
 }
 
-void Panier::afficher()
+void Panier::afficher() const
 {
-	cout << nombreContenu_;
-	cout << capaciteContenu_;
-	cout << totalAPayer_; 
+	cout << "Nombre contenu " << nombreContenu_ << endl;
+	cout << "Capacite " << capaciteContenu_ << endl;
+	cout << "Total a payer " << totalAPayer_ << endl;
+		
 
 	for (int i = 0; i < nombreContenu_; i++)
 	{
@@ -79,5 +96,6 @@ void Panier::afficher()
 		
 	}
 
+	
 
 }
